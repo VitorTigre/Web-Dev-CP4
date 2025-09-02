@@ -1,73 +1,130 @@
-// Dados de exemplo dos posts
-let posts = [
+let cards = [
     {
-        text: "Este é o primeiro post",
-        category: "Notícias",
-        image: "https://placedog.net/150?random=1",
-        date: "12/10/2021 12:00:00"
+        "nome": "Andressa Alves",
+        "posicao": "Meio-campo",
+        "clube": "Corinthians",
+        "foto": "https://example.com/andressa.jpg",
+        "gols": 15,
+        "assistencias": 10,
+        "jogos": 28,
+        "favorita": false
     },
     {
-        text: "Este é o segundo post",
-        category: "Dicas",
-        image: "https://placedog.net/150?random=2",
-        date: "12/10/2022 12:00:00"
+        "nome": "Dayana Rodríguez",
+        "posicao": "Meio-campo",
+        "clube": "Corinthians",
+        "foto": "https://example.com/dayana.jpg",
+        "gols": 5,
+        "assistencias": 12,
+        "jogos": 30,
+        "favorita": false
     },
     {
-        text: "Este é o terceiro post teste",
-        category: "Eventos",
-        date: "12/10/2023 12:00:00"
+        "nome": "Mariza",
+        "posicao": "Zagueira",
+        "clube": "Corinthians",
+        "foto": "https://example.com/mariza.jpg",
+        "gols": 2,
+        "assistencias": 1,
+        "jogos": 32,
+        "favorita": false
+    },
+    {
+        "nome": "Thaís Regina",
+        "posicao": "Zagueira",
+        "clube": "Corinthians",
+        "foto": "https://example.com/thais.jpg",
+        "gols": 1,
+        "assistencias": 2,
+        "jogos": 25,
+        "favorita": false
+    },
+    {
+        "nome": "Letícia Teles",
+        "posicao": "Zagueira",
+        "clube": "Corinthians",
+        "foto": "https://example.com/leticia.jpg",
+        "gols": 0,
+        "assistencias": 0,
+        "jogos": 18,
+        "favorita": false
     }
-];
-
+]
 
 // Inicialização
 window.onload = function() {
-    displayPosts();
+    displayCards();
 
-    document.getElementById('postForm').addEventListener('submit', addPost); 
+    document.getElementById('cardForm').addEventListener('submit', addCard); 
 };
 
-// Função para exibir os posts
-function displayPosts() {
-    const postList = document.getElementById('postList');
-    postList.innerHTML = '';
+// Função para exibir os cards
+function displayCards() {
+    const cardList = document.getElementById('cardList');
+    cardList.innerHTML = '';
 
-    posts.forEach(pegaPost => {
-            const postElement = document.createElement('div');
-            postElement.classList.add('card-post');
-  
-            postElement.innerHTML = `
-                <p>${pegaPost.text}</p>
-                ${pegaPost.image ? <img src="${pegaPost.image}" alt="Imagem do post" style="max-width:150px;"> : ""
-                <p><em>Categoria: ${pegaPost.category}</em></p>
-                <p><em>Data e Hora: ${pegaPost.date}</em></p>
+    cards.forEach(pegaCard => {
+            const postCard = document.createElement('div');
+            postCard.classList.add('card-post');
+
+            postCard.innerHTML = `
+                <h4>${pegaCard.nome}</h4>
+                
+                <div class="posicao-clube">
+                <p><em>${pegaCard.posicao}</em></p>
+                <hr></hr>
+                <p><em>${pegaCard.clube}</em></p>
+                </div>
+
+                ${pegaCard.foto ? `<img class="imagem-jogadora" src="${pegaCard.foto}" alt="Imagem do post" style="max-width:150px;">` : ""}
+                
+                <div class="informacoes-jogos">
+                <div class="informacao-gols">
+                <p><em>Gols: ${pegaCard.gols}</em></p>
+                <p><em>Assistencias: ${pegaCard.assistencias}</em></p></div>
+                <hr></hr>
+                <div class="informacao">
+                <p><em>Jogos: ${pegaCard.jogos}</em></p>
+                <p><em>Favorita?: ${pegaCard.favorita}</em></p></div>
+                </div>
+
+                <div class="btn-edicao">
                 <button><i class="fa-solid fa-pen-to-square"></i> Editar</button>
                 <button><i class="fa-solid fa-eraser"></i> Apagar</button>
-                <hr style="margin:30px;">`;
-               
-            postList.append(postElement);
+                </div>`;
+
+                cardList.append(postCard);
         });
 }
 
-// Função para adicionar um novo post
-function addPost(event) {
+// Função para adicionar um novo card
+function addCard(event) {
     event.preventDefault();
     
-    const postText = document.getElementById('postText').value;
-    const postCategory = document.getElementById('postCategory').value;
-    const postImage = document.getElementById('postImage').value
-    const postDate = new Date().toLocaleString(); 
+    const postName = document.getElementById('postName').value; //mudar classe
+    const postPosition = document.getElementById('postPosition').value
+    const postClube = document.getElementById('postClube').value
+    const postFoto = document.getElementById('postFoto').value
+    const postGols = document.getElementById('postGols').value
+    const postAssitencia = document.getElementById('postAssistencia').value
+    const postJogos = document.getElementById('postJogos').value
+    const postFavorita = document.getElementById('postFavorita').value
 
-    const post = { 
-        text: postText, 
-        category: postCategory, 
-        image: postImage, 
-        date: postDate 
+
+    const card = { 
+        nome: postName,  // mudar o const
+        posicao: postPosition, 
+        clube: postClube, 
+        foto: postFoto,
+        gols: postGols,
+        assistencias: postAssitencia,
+        jogos: postJogos,
+        favorita: postFavorita
     };
     
-    posts.unshift(post);
+    cards.unshift(card);
     
-    document.getElementById('postForm').reset();
+    document.getElementById('cardForm').reset();
     
-    displayPosts();
+    displayCards();
 }

@@ -11,37 +11,54 @@
         <h1>Fifa Cards</h1>
     </header>
 
+    <div class="aside-e-cards">
     <!-- Formulário para criar um novo post -->
-    <form id="postForm">
-        <i class="fa-solid fa-pen"></i> <label for="name"> Digite seu nome completo:</label><br>
-        <textarea id="postText" rows="1" cols="50 " placeholder="Nome Completo:"></textarea><br>
-        <i class="fa-solid fa-list"></i> <label for="postCategory">Posição:</label>
-        <select id="postCategory">
-            <option value="Goleira">Goleira</option>
-            <option value="Zagueira">Zagueira</option>
-            <option value="Meio-Campo">Meio-Campo</option>
-            <option value="Atacante">Atacante</option>
-        </select><br>
-        <i class="fa-solid fa-pen"></i> <label for="postText"> Digite seu time</label><br>
-        <textarea id="postText" rows="1" cols="50 " placeholder="Nome do Time:"></textarea><br>
+        <form id="cardForm">
+            <i class="fa-solid fa-pen"></i> <label for="postName"> Digite seu nome completo:</label><br>
+            <textarea id="postName" rows="1" cols="50 " placeholder="Nome Completo:"></textarea><br>
 
-        <i class="fa-solid fa-image"></i> <label for="postImage">Insira uma imagem (URL):</label><br>
-        <input type="text" id="postImage" placeholder="Insira a url aqui"><br>
+            <i class="fa-solid fa-list"></i> <label for="postPosition">Posição:</label>
+            <select id="postPosition">
+                <option value="Goleira">Goleira</option>
+                <option value="Zagueira">Zagueira</option>
+                <option value="Meio-Campo">Meio-Campo</option>
+                <option value="Atacante">Atacante</option>
+            </select><br>
 
-        <i class="fa-solid fa-pen"></i> <label for="postText"> Quantos Gols Marcados?</label><br>
-        <textarea id="postText" rows="1" cols="50 " placeholder="Gols:"></textarea><br>
+            <i class="fa-solid fa-pen"></i> <label for="postClube"> Digite seu time</label><br>
+            <textarea id="postClube" rows="1" cols="50 " placeholder="Nome do Time:"></textarea><br>
 
-        <i class="fa-solid fa-pen"></i> <label for="postText"> Quantas Assistências?</label><br>
-        <textarea id="postText" rows="1" cols="50 " placeholder="Assistências:"></textarea><br>
-    <button type="submit"><i class="fa-solid fa-bullhorn"></i> Postar</button>
-    </form>
+            <i class="fa-solid fa-image"></i> <label for="postFoto">Insira uma imagem (URL):</label><br>
+            <input type="text" id="postFoto" placeholder="Insira a url aqui"><br>
 
-    <h1>Jogadoras</h1>
+            <i class="fa-solid fa-pen"></i> <label for="postGols"> Quantos Gols Marcados?</label><br>
+            <textarea id="postGols" rows="1" cols="50 " placeholder="Gols:"></textarea><br>
 
-    <!-- Lista de posts -->
-    <div id="postList"></div>
+            <i class="fa-solid fa-pen"></i> <label for="postAssistencia"> Quantas Assistências?</label><br>
+            <textarea id="postAssistencia" rows="1" cols="50 " placeholder="Assistências:"></textarea><br>
 
-    <script src="script.js"></script>
+            <i class="fa-solid fa-pen"></i> <label for="postJogos"> Quantos Jogos?</label><br>
+            <textarea id="postJogos" rows="1" cols="50 " placeholder="Jogos:"></textarea><br>
+
+            <i class="fa-solid fa-list"></i> <label for="postFavorita">É uma jogadora favorita?</label><br>
+            <select id="postFavorita">
+                <option value="sim">Sim</option>
+                <option value="não">Não</option>
+            </select><br>
+        <button type="submit"><i class="fa-solid fa-bullhorn"></i> Postar</button>
+        </form>
+        
+        <div class="card-jogadoras">
+            <h1>Jogadoras</h1>
+
+            <!-- Lista de posts -->
+            <div class="lista-post">
+                <div id="cardList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
     <script src="https://kit.fontawesome.com/129b440489.js" crossorigin="anonymous"></script>
 </body>
 </html>
