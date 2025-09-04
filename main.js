@@ -67,7 +67,7 @@ function handleCardClick(event){
     const index = clickedElement.dataset.index;
 
     if (acao === 'edit'){
-        
+        editCard(index)
     }else if (acao === 'delete'){
         deleteCard(index)
     }
@@ -144,6 +144,22 @@ function addCard(event) {
     displayCards();
 }
 
+// Função para editar um card
+function editCard(index){
+    const novoCard = cards[index];
+    
+    novoCard.nome = prompt("Nome: ", novoCard.nome) || novoCard.nome;
+    novoCard.posicao = prompt("Posição: ", novoCard.posicao) || novoCard.posicao;
+    novoCard.clube = prompt("Clube: ", novoCard.clube) || novoCard.clube;
+    novoCard.foto = prompt("foto: ", novoCard.foto) || novoCard.foto;
+    novoCard.gols = prompt("Gols: ", novoCard.gols) || novoCard.gols;
+    novoCard.assistencias = prompt("Assistencias: ", novoCard.assistencias) || novoCard.assistencias;
+    novoCard.jogos = prompt("Jogos: ", novoCard.jogos) || novoCard.jogos;
+    displayCards();
+
+
+}
+// Função para deletar um card
 function deleteCard(index){
     const confirmar = confirm("tem certeza que deseja apagar esse card? ")
     if(confirmar){
