@@ -53,7 +53,9 @@ let cards = [
 
 // Inicialização
 window.onload = function() {
+    loadCards();
     displayCards();
+    
 
     document.getElementById('cardForm').addEventListener('submit', addCard);
     document.getElementById('cardList').addEventListener('click', handleCardClick)
@@ -70,6 +72,16 @@ function handleCardClick(event){
         editCard(index)
     }else if (acao === 'delete'){
         deleteCard(index)
+    }
+}
+// função para conseguir salvar no localstorage
+function saveCards(){
+    localStorage.setItem("cards", JSON.stringify(cards));
+}
+function loadCards(){
+    const storedCards = localStorage.getItem("cards");
+    if (storedCards){
+        cards = JSON.parse(storedCards);
     }
 }
 
@@ -138,6 +150,7 @@ function addCard(event) {
     };
     
     cards.unshift(card);
+    saveCards();
     
     document.getElementById('cardForm').reset();
     
@@ -155,6 +168,7 @@ function editCard(index){
     novoCard.gols = prompt("Gols: ", novoCard.gols) || novoCard.gols;
     novoCard.assistencias = prompt("Assistencias: ", novoCard.assistencias) || novoCard.assistencias;
     novoCard.jogos = prompt("Jogos: ", novoCard.jogos) || novoCard.jogos;
+    saveCards();
     displayCards();
 
 
@@ -164,6 +178,7 @@ function deleteCard(index){
     const confirmar = confirm("tem certeza que deseja apagar esse card? ")
     if(confirmar){
         cards.splice(index, 1);
+        saveCards();
         displayCards();
     }
 }
