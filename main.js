@@ -55,15 +55,30 @@ let cards = [
 window.onload = function() {
     displayCards();
 
-    document.getElementById('cardForm').addEventListener('submit', addCard); 
+    document.getElementById('cardForm').addEventListener('submit', addCard);
+    document.getElementById('cardList').addEventListener('click', handleCardClick)
 };
+
+function handleCardClick(event){
+    const clickedElement = event.target.closest("button");
+    if (!clickedElement) return;
+
+    const acao =clickedElement.dataset.action;
+    const index = clickedElement.dataset.index;
+
+    if (acao === 'edit'){
+        
+    }else if (acao === 'delete'){
+        deleteCard(index)
+    }
+}
 
 // Função para exibir os cards
 function displayCards() {
     const cardList = document.getElementById('cardList');
     cardList.innerHTML = '';
 
-    cards.forEach(pegaCard => {
+    cards.forEach((pegaCard, index) => {
             const postCard = document.createElement('div');
             postCard.classList.add('card-post');
 
@@ -89,8 +104,8 @@ function displayCards() {
                 </div>
 
                 <div class="btn-edicao">
-                <button><i class="fa-solid fa-pen-to-square"></i> Editar</button>
-                <button><i class="fa-solid fa-eraser"></i> Apagar</button>
+                <button data-action="edit" data-index="${index}"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
+                <button data-action="delete" data-index="${index}"><i class="fa-solid fa-eraser"></i> Apagar</button>
                 </div>`;
 
                 cardList.append(postCard);
@@ -128,3 +143,12 @@ function addCard(event) {
     
     displayCards();
 }
+
+function deleteCard(index){
+    const confirmar = confirm("tem certeza que deseja apagar esse card? ")
+    if(confirmar){
+        cards.splice(index, 1);
+        displayCards();
+    }
+}
+
