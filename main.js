@@ -72,6 +72,8 @@ function handleCardClick(event){
         editCard(index)
     }else if (acao === 'delete'){
         deleteCard(index)
+    }else if (acao === 'favoritar'){
+        toggleFavorito(index)
     }
 }
 // função para conseguir salvar no localstorage
@@ -93,7 +95,7 @@ function displayCards() {
     cards.forEach((pegaCard, index) => {
             const postCard = document.createElement('div');
             postCard.classList.add('card-post');
-
+            const cardFavorito = pegaCard.favorita ? "❤️":"🤍";
             postCard.innerHTML = `
                 <h4>${pegaCard.nome}</h4>
                 
@@ -116,8 +118,11 @@ function displayCards() {
                 </div>
 
                 <div class="btn-edicao">
+                <div class ="btn-editar-apagar">
                 <button data-action="edit" data-index="${index}"><i class="fa-solid fa-pen-to-square"></i> Editar</button>
                 <button data-action="delete" data-index="${index}"><i class="fa-solid fa-eraser"></i> Apagar</button>
+                </div>
+                <button data-action="favoritar" data-index="${index}">${cardFavorito}</button>
                 </div>`;
 
                 cardList.append(postCard);
@@ -182,4 +187,9 @@ function deleteCard(index){
         displayCards();
     }
 }
-
+// função para favoritar um card
+function toggleFavorito(index){
+    cards[index].favorita = !cards[index].favorita;
+    saveCards();
+    displayCards();
+}
