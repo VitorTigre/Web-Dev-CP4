@@ -142,4 +142,9 @@ ul {
         }
     }
 }
-
+.btn-edicao{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
