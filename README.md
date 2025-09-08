@@ -19,6 +19,6 @@ Um projeto para criar **cards personalizados de jogadoras de futebol**, onde é 
 - JavaScript
 
 - INTEGRANTES:
-Vitor Rodrigues Tigre
-Mariana Silva
-Kaua Oliveira
+- [Kauã Oliveira](https://github.com/erasedmyself)  
+- [Mariana Silva](https://github.com/Marirsil)
+- [Vitor Tigre](https://github.com/VitorTigre)
